@@ -187,6 +187,9 @@ def main():
     argparser.add_argument(
         "-i", "--input", nargs="+", help="input file(s)", default=["*.qfx"]
     )
+    argparser.add_argument(
+        "-p", "--positions", action="store_true", help="get positions"
+    )
     args = argparser.parse_args()
 
     outputtype = args.outputtype
@@ -200,12 +203,13 @@ def main():
                 statement, outputtype, Path(qfx_file).with_suffix("." + outputtype)
             )
 
-            positions = get_positions_from_qfx(qfx)
-            save_files(
-                positions,
-                outputtype,
-                Path(qfx_file).with_suffix(".positions." + outputtype),
-            )
+            if args.positions:
+                positions = get_positions_from_qfx(qfx)
+                save_files(
+                    positions,
+                    outputtype,
+                    Path(qfx_file).with_suffix(".positions." + outputtype),
+                )
 
 
 main()
