@@ -57,6 +57,7 @@ def showStructure(obj, depth: int = 5):
 
 
 def get_statement_from_qfx(qfx: OfxParser):
+    # DBG import pprint
     # DBG print("qfx                               :{}".format(myDir(qfx                               )))  # noqa: E501
     # DBG print("qfx.account                       :{}".format(myDir(qfx.account                       )))  # noqa: E501
     # DBG print("qfx.account.statement             :{}".format(myDir(qfx.account.statement             )))  # noqa: E501
