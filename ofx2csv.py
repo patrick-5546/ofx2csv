@@ -200,9 +200,9 @@ def main():
             print("Reading {}...".format(qfx_file))
             qfx = OfxParser.parse(open(qfx_file, encoding="latin-1"))
             statement = get_statement_from_qfx(qfx)
-            save_files(
-                statement, outputtype, Path(qfx_file).with_suffix("." + outputtype)
-            )
+            date_stamp = datetime.now().strftime("%Y%m%d")
+            suffix = ".{}.{}".format(date_stamp, outputtype)
+            save_files(statement, outputtype, Path(qfx_file).with_suffix(suffix))
 
             if args.positions:
                 positions = get_positions_from_qfx(qfx)
